@@ -2,7 +2,7 @@
 
 Windows console for IEEE 802.15.4 and ZigBee capture. The program listens on this PC only (`http://127.0.0.1:5080`).
 
-This repository is the download. The application source is not published here.
+This repository is the download. The current build is an **alpha**. The application source is not published here.
 
 ## Licence
 
@@ -21,9 +21,17 @@ You receive a `TRX1` licence. In the console, open **Install licence**, paste th
 
 You need 64-bit Windows 10 or Windows 11.
 
-1. Install [MongoDB Community Server](https://www.mongodb.com/try/download/community) and leave it running on this PC. Keep the installer's default localhost port (27017). The console calls this packet storage and does not show the database address.
-2. Download [TRxSniffer 1.0.0 for Windows](https://github.com/aidevices-uk/trxsniffer-releases/releases/download/v1.0.0/TRxSniffer-1.0.0-win-x64.zip).
-3. Check the file if you want to: SHA256 `e3ac1275e25b1b551caca6f67889198c6e565df4007588266dda3484ea65d94d`.
+1. Install [MongoDB Community Server](https://www.mongodb.com/try/download/community) and leave it running on this PC. Set its port to **37017** and bind it to `127.0.0.1`. That keeps TRxSniffer off a database you already run on the default port 27017. In `mongod.cfg`:
+
+   ```yaml
+   net:
+     bindIp: 127.0.0.1
+     port: 37017
+   ```
+
+   Restart the MongoDB service after saving that file. The console calls this packet storage and does not show the address.
+2. Download [TRxSniffer 0.1.0 alpha for Windows](https://github.com/aidevices-uk/trxsniffer-releases/releases/download/v0.1.0-alpha/TRxSniffer-0.1.0-alpha-win-x64.zip).
+3. Check the file if you want to: SHA256 `6af3e46ce3d2d3447af3cbbb4427a3c145d12179879af2130aca2130c7ff2997`.
 4. Extract the zip and run `Start-TRxSniffer.cmd`.
 5. The console opens at http://127.0.0.1:5080. Paste the licence, then press **Start**.
 
